@@ -1,0 +1,7 @@
+have 8 hours of sleep
+cd "c:\Users\EK522WS\tod_cli\src\" ; if ($?) { rustc main.rs } ; if ($?) { .\main }
+have good bath
+hii
+cd "c:\Users\EK522WS\tod_cli\src\" ; if ($?) { rustc main.rs } ; if ($?) { .\main }
+cd "c:\Users\EK522WS\tod_cli\src\" ; if ($?) { rustc main.rs } ; if ($?) { .\main }
+now have a drink
