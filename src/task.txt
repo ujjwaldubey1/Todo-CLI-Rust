@@ -5,3 +5,4 @@ hii
 cd "c:\Users\EK522WS\tod_cli\src\" ; if ($?) { rustc main.rs } ; if ($?) { .\main }
 cd "c:\Users\EK522WS\tod_cli\src\" ; if ($?) { rustc main.rs } ; if ($?) { .\main }
 now have a drink
+hi new taks here

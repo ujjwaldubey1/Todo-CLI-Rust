@@ -1,10 +1,22 @@
-use std::fs::OpenOptions;
+use std::fs::{self, OpenOptions};
 use std::io::{self, Write};
 
 fn main() -> std::io::Result<()> {
-    let user_input = take_input();
-    save_to_file(&user_input, "task.txt");
-    print!("Data is stored!");
+    println!("Enter commands");
+    let mut _command_input = String::new();
+    io::stdin()
+        .read_line(&mut _command_input)
+        .expect("Error in data entry");
+
+    let file_path = String::from("task.txt");
+    if _command_input.trim() == "Add input" {
+        let user_todo_input = take_input();
+        save_to_file(&user_todo_input, &file_path);
+        print!("Data is stored!");
+    } else if _command_input.trim() == "Get tasks" {
+        let taks = read_todo_file(&file_path);
+        println!("Your tasks are \n {}", taks);
+    }
     Ok(())
 }
 
@@ -41,3 +53,8 @@ fn save_to_file(data: &str, file_name: &str) -> std::io::Result<()> {
 //     writeln!(file, "{}", data)?;
 //     Ok(())
 // }
+
+fn read_todo_file(file: &str) -> String {
+    let todos_from_file = fs::read_to_string(file).expect("Error in reading");
+    todos_from_file
+}
