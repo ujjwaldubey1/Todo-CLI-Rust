@@ -1,0 +1,12 @@
+# Ignore compiled files
+/target/
+**/*.exe
+**/*.pdb
+
+# Ignore dependency lock files if needed (optional)
+Cargo.lock
+
+# Ignore IDE/editor settings (optional)
+*.swp
+.idea/
+.vscode/
