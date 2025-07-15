@@ -5,5 +5,6 @@ fn main() {
     io::stdin()
         .read_line(&mut input)
         .expect("Error in reading input");
-    print!("{}", input)
+    print!("{}", input);
+    print!("{}", input);
 }
