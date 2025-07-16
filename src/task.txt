@@ -6,3 +6,5 @@ cd "c:\Users\EK522WS\tod_cli\src\" ; if ($?) { rustc main.rs } ; if ($?) { .\mai
 cd "c:\Users\EK522WS\tod_cli\src\" ; if ($?) { rustc main.rs } ; if ($?) { .\main }
 now have a drink
 hi new taks here
+nothing to do
+task { id: 1, title: "work hard at night", done: false }

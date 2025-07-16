@@ -1,6 +1,13 @@
+use serde::{Deserialize, Serialize};
 use std::fs::{self, OpenOptions};
 use std::io::{self, Write};
 
+#[derive(Debug)]
+struct task {
+    id: i32,
+    title: String,
+    done: bool,
+}
 fn main() -> std::io::Result<()> {
     println!("Enter commands");
     let mut _command_input = String::new();
@@ -8,7 +15,7 @@ fn main() -> std::io::Result<()> {
         .read_line(&mut _command_input)
         .expect("Error in data entry");
 
-    let file_path = String::from("task.txt");
+    let file_path = String::from("task.json");
     if _command_input.trim() == "Add input" {
         let user_todo_input = take_input();
         save_to_file(&user_todo_input, &file_path);
@@ -17,6 +24,7 @@ fn main() -> std::io::Result<()> {
         let taks = read_todo_file(&file_path);
         println!("Your tasks are \n {}", taks);
     }
+
     Ok(())
 }
 
@@ -41,7 +49,12 @@ fn save_to_file(data: &str, file_name: &str) -> std::io::Result<()> {
         .append(true)
         .create(true)
         .open(file_name)?;
-    writeln!(file, "{}", data)?;
+    let tasks = task {
+        id: 1,
+        title: data.to_string(),
+        done: false,
+    };
+    writeln!(file, "{:?}", tasks)?;
     Ok(())
 }
 
