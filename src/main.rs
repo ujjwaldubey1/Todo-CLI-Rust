@@ -2,8 +2,9 @@ use serde::{Deserialize, Serialize};
 use std::fs::{self, OpenOptions};
 use std::io::{self, Write};
 
-#[derive(Debug)]
-struct task {
+#[derive(Serialize, Deserialize, Debug)]
+
+struct Task {
     id: i32,
     title: String,
     done: bool,
@@ -16,10 +17,12 @@ fn main() -> std::io::Result<()> {
         .expect("Error in data entry");
 
     let file_path = String::from("task.json");
+
     if _command_input.trim() == "Add input" {
         let user_todo_input = take_input();
         save_to_file(&user_todo_input, &file_path);
         print!("Data is stored!");
+        
     } else if _command_input.trim() == "Get tasks" {
         let taks = read_todo_file(&file_path);
         println!("Your tasks are \n {}", taks);
@@ -49,12 +52,18 @@ fn save_to_file(data: &str, file_name: &str) -> std::io::Result<()> {
         .append(true)
         .create(true)
         .open(file_name)?;
-    let tasks = task {
-        id: 1,
+    let mut tasks: Vec<Task> = vec![];
+
+    let new_id = tasks.iter().map(|t| t.id).max().unwrap_or(0);
+
+    tasks.push(Task {
+        id: new_id,
         title: data.to_string(),
         done: false,
-    };
-    writeln!(file, "{:?}", tasks)?;
+    });
+    let json = serde_json::to_string_pretty(&tasks).expect("serialization faild");
+    writeln!(file, "{:}", json)?;
+
     Ok(())
 }
 

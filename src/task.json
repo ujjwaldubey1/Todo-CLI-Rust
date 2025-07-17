@@ -1,1 +1,24 @@
 task { id: 1, title: "have 3 liter of water daily", done: false }
+[task { id: 1, title: "do not fap fro 9 days", done: false }]
+[task { id: 1, title: "have fun all the time", done: false }]
+[
+  {
+    "id": 1,
+    "title": "hi it's new day do somthing new",
+    "done": false
+  }
+]
+[
+  {
+    "id": 1,
+    "title": "Write the Goal of the day in start of the day",
+    "done": false
+  }
+]
+[
+  {
+    "id": 0,
+    "title": "Put you 100% in every task",
+    "done": false
+  }
+]
