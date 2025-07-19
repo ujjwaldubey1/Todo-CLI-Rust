@@ -1,12 +1,31 @@
-# Ignore compiled files
+# Rust-specific ignores
+# Compiled binaries and build artifacts
 /target/
-**/*.exe
-**/*.pdb
 
-# Ignore dependency lock files if needed (optional)
-Cargo.lock
+# Cargo's local registry cache and git checkouts
+.cargo/registry/
+.cargo/git/
 
-# Ignore IDE/editor settings (optional)
-*.swp
-.idea/
+# Rust-analyzer (language server) files
+.rust-analyzer/
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# IDE and Editor specific files
+# VS Code
 .vscode/
+# IntelliJ Rust plugin
+.idea/
+# CLion
+.clion/
+
+# Local configuration files
+# For example, environment variables
+.env
+.env.*
+!.env.example # Keep example .env file if it exists
+
+# Crates.io publish artifacts
+*.crate
